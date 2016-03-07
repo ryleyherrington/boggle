@@ -184,9 +184,9 @@ void printTrie(Trie* t) {
 
 int main(int argc, char* argv[] )
 {
-    string inputString = "yoxrbaved";
+  //  string inputString = "yoxrbaved";
+    string inputString = "zcuddeuvzksfkcwfnwaiinjjmglodyrvgjirsvfvdchllmahojakmfpfbqhcgcfvvyqdyqjnxuliceytobxdmfrchwuzpubkinxz";
     vector <string> dict;
-//    ifstream inf("dictionary.txt");
     fstream f;
     f.open("/usr/share/dict/words", fstream::in);
 
@@ -209,12 +209,18 @@ int main(int argc, char* argv[] )
     
     printTrie(root);
     
-    int m = 3; //rows
-    int n = 3; //columns
+    int m = 10; //rows
+    int n = 10; //columns
     vector<B_row_t> bb = buildBoard(m, n, inputString); //boggle board
     
 //   	vector<string> foundWords = findWords(m, n, bb, dictionary, root);
+    std::clock_t start;
+    double duration;
+    
+    start = std::clock();
    	vector<string> foundWords = findWords(m, n, bb, dict, root);
+    duration = ( std::clock() - start ) / (double) CLOCKS_PER_SEC;
+    printf("Took %f seconds\n", duration);
     printf("Found %lu words:\n", foundWords.size());
     for (int j = 0; j < foundWords.size(); ++j) {
         printf("%s\n", foundWords[j].c_str());
