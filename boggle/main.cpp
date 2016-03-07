@@ -166,7 +166,7 @@ void traverse(Trie *t, string prefix, Pos p, vector<B_row_t>bb, int rowsize, int
 //n is # of columns
 vector<string>findWords(int m, int n, vector<B_row_t>bb, vector<string>dictionary, Trie *root) {
     for (int i=0; i<m; i++) {
-        for (int j=0; j<m; j++) {
+        for (int j=0; j<n; j++) {
             traverse(root, "", Pos(i,j), bb, m, n);
         }
     }
