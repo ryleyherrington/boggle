@@ -30,6 +30,7 @@ class Trie{
 public:
     Trie* parent;
     bool isWord;
+    bool hasBeenAdded;
     char letter;
     vector<Trie*> children; //Trie* children[26];
     Trie();
@@ -42,6 +43,7 @@ public:
 Trie::Trie()
 : parent(NULL)
 , isWord(false)
+, hasBeenAdded(false)
 , letter(0)
 {
 }
@@ -49,6 +51,7 @@ Trie::Trie()
 Trie::Trie(Trie *par, char c)
 : parent(par)
 , isWord(false)
+, hasBeenAdded(false)
 , letter(c)
 {
 }
@@ -97,7 +100,6 @@ int Trie::letterInChildren(char c) {
 
 string Trie::finalWord(string currWord) {
     if (letter == '\0'){
-        printf("%s\n",currWord.c_str());
         return currWord;
     }
     
@@ -113,7 +115,6 @@ void Trie::addWord(string word) {
     if (idx != -1 ){ //node already exists
         if (tail.size() == 0) {
             this->isWord = true;
-            printf("%c\n", word[0]);
             return;
         }
         children[idx]->addWord(tail); //delete first char and keep moving down the word
@@ -123,7 +124,6 @@ void Trie::addWord(string word) {
         if (tail.size() == 0) {
             t->isWord = true;
             children.push_back(t); //add child to root
-            printf("%c\n", word[0]);
             return;
         }
         children.push_back(t); //add child to root
@@ -158,11 +158,11 @@ void traverse(Trie *t, string prefix, Pos p, vector<B_row_t>bb, int rowsize, int
     if (b -> isUsed) //if used, move on
         return;
     
-    
     string checkWord(prefix);
     checkWord = checkWord + b->letter; //old prefix + new letter
     
-    if (t->isWord) { //if it's a word
+    if (t->isWord && t->hasBeenAdded == false) { //if it's a word
+        t->hasBeenAdded = true;
         foundWords.push_back(prefix); //add to found words
     }
     
@@ -181,7 +181,11 @@ void traverse(Trie *t, string prefix, Pos p, vector<B_row_t>bb, int rowsize, int
 //m is # of rows
 //n is # of columns
 vector<string>findWords(int m, int n, vector<B_row_t>bb, vector<string>dictionary, Trie *root) {
-    traverse(root, "", Pos(0,0), bb, m, n);
+    for (int i=0; i<m; i++) {
+        for (int j=0; j<m; j++) {
+            traverse(root, "", Pos(i,j), bb, m, n);
+        }
+    }
     return foundWords;
 }
 
@@ -204,25 +208,24 @@ int main()
         "orbed","verb","aery","bead","bread","very","road", "ryley", "testing"
     };
     
-//    vector<string> dictionary = {
-//        "yore", "bore", "ryley"
-//    };
-    //printf("starting\n");
     Trie* root = new Trie();
     for (int i=0; i<dictionary.size(); i++) {
-        //printf("%s\n", dictionary[i].c_str());
         root->addWord(dictionary[i]);
     }
     
     printTrie(root);
     
-    int m = 3;
-    int n = 3;
+    int m = 3; //rows
+    int n = 3; //columns
     vector<B_row_t> bb = buildBoard(m, n, inputString); //boggle board
     
    	vector<string> foundWords = findWords(m, n, bb, dictionary, root);
-    printf("Found words:\n");
-    
+    printf("Found %lu words:\n", foundWords.size());
+    for (int j = 0; j < foundWords.size(); ++j) {
+        printf("%s\n", foundWords[j].c_str());
+    }
+
+    return 0;
 }
 
 
