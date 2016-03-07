@@ -194,6 +194,7 @@ int main(int argc, char* argv[] )
     while (f >> word) {
         dict.push_back(word);
     }
+    printf("Number of workds:%lu\n", dict.size());
     
 //    vector<string> dictionary = {
 //        "bred","yore","byre","abed","oread","bore","orby","robed","phone",
