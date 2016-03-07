@@ -85,8 +85,9 @@ offset_t offsets [] = {
 };
 
 int Trie::letterInChildren(char c) {
-    //    printf("letter:'%c' \n",c);
+    printf("\nParent: %c\n", c);
     for (int i=0; i<children.size(); i++){
+        printf("\t\t%c", children[i]->letter);
         if (children[i]->letter == c) {
             return i;
         }
@@ -119,12 +120,13 @@ void Trie::addWord(string word) {
         
     } else { //node doesn't exist
         Trie* t = new Trie(this, word[0]); //create new child
-        children.push_back(t); //add child to root
         if (tail.size() == 0) {
             t->isWord = true;
+            children.push_back(t); //add child to root
             printf("%c\n", word[0]);
             return;
         }
+        children.push_back(t); //add child to root
         t->addWord(tail); //move down the word
     }
 }
@@ -156,12 +158,14 @@ void traverse(Trie *t, string prefix, Pos p, vector<B_row_t>bb, int rowsize, int
     if (b -> isUsed) //if used, move on
         return;
     
+    
     string checkWord(prefix);
-    //checkWord.append(b.letter); //old prefix + new letter
     checkWord = checkWord + b->letter; //old prefix + new letter
     
-    if (t->isWord) //if it's a word
-        foundWords.push_back(checkWord); //add to found words
+    if (t->isWord) { //if it's a word
+        foundWords.push_back(prefix); //add to found words
+    }
+    
     
     b->isUsed = true;
     for (int i=0; i<8; i++) {
@@ -195,15 +199,15 @@ int main()
 {
     string inputString = "yoxrbaved";
     
-//    vector<string> dictionary = {
-//        "bred","yore","byre","abed","oread","bore","orby","robed","phone",
-//        "broad","byroad","robe","bored","derby","bade","aero","read", "small",
-//        "orbed","verb","aery","bead","bread","very","road", "ryley", "testing"
-//    };
-    
     vector<string> dictionary = {
-        "yore", "bore", "ryley"
+        "bred","yore","byre","abed","oread","bore","orby","robed","phone",
+        "broad","byroad","robe","bored","derby","bade","aero","read", "small",
+        "orbed","verb","aery","bead","bread","very","road", "ryley", "testing"
     };
+    
+//    vector<string> dictionary = {
+//        "yore", "bore", "ryley"
+//    };
     //printf("starting\n");
     Trie* root = new Trie();
     for (int i=0; i<dictionary.size(); i++) {
