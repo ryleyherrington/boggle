@@ -1,21 +1,3 @@
-/*
- Write a function which will find all the words on a generalized Boggle™ board.  The function should take as input the board dimensions, the board, and a dictionary of valid words and it should output the list of all found words to the calling function. You should consider how your approach will perform with a large dictionary and a large board.
- 
- If you've never heard of Boggle then see http://en.wikipedia.org/wiki/Boggle for a better description than I can write.  A 3x3 boggle board that looks like this:
- 
-	y o x
-	r b a
-	v e d
- 
- Has exactly the following words on it (according to my program):
- 
-	bred, yore, byre, abed, oread, bore, orby, robed, broad, byroad, robe
-	bored, derby, bade, aero, read, orbed, verb, aery, bead, bread, very, road
- 
- Note that it doesn't have “robbed” or “robber” because that would require reusing some letters to form the word.  And it doesn’t have “board” or “dove” because that would require using letters which aren’t neighbors.
- 
- */
-
 #include <stdlib.h>
 #include <stdio.h>
 #include <vector>
