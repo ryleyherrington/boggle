@@ -85,9 +85,9 @@ offset_t offsets [] = {
 };
 
 int Trie::letterInChildren(char c) {
-    printf("\nParent: %c\n", c);
+//    printf("\nParent: %c\n", c);
     for (int i=0; i<children.size(); i++){
-        printf("\t\t%c", children[i]->letter);
+ //       printf("\t\t%c", children[i]->letter);
         if (children[i]->letter == c) {
             return i;
         }
@@ -165,7 +165,6 @@ void traverse(Trie *t, string prefix, Pos p, vector<B_row_t>bb, int rowsize, int
     if (t->isWord) { //if it's a word
         foundWords.push_back(prefix); //add to found words
     }
-    
     
     b->isUsed = true;
     for (int i=0; i<8; i++) {
