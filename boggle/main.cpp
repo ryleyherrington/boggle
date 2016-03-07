@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <vector>
 #include <string>
+#include <fstream>
 
 using namespace std;
 
@@ -145,7 +146,8 @@ void traverse(Trie *t, string prefix, Pos p, vector<B_row_t>bb, int rowsize, int
     
     if (t->isWord && t->hasBeenAdded == false) { //if it's a word
         t->hasBeenAdded = true;
-        foundWords.push_back(prefix); //add to found words
+        if (prefix.length() > 2)
+            foundWords.push_back(prefix); //add to found words
     }
     
     b->isUsed = true;
@@ -180,19 +182,29 @@ void printTrie(Trie* t) {
     }
 }
 
-int main()
+int main(int argc, char* argv[] )
 {
     string inputString = "yoxrbaved";
+    vector <string> dict;
+//    ifstream inf("dictionary.txt");
+    fstream f;
+    f.open("/usr/share/dict/words", fstream::in);
+
+    string word;
+    while (f >> word) {
+        dict.push_back(word);
+    }
     
-    vector<string> dictionary = {
-        "bred","yore","byre","abed","oread","bore","orby","robed","phone",
-        "broad","byroad","robe","bored","derby","bade","aero","read", "small",
-        "orbed","verb","aery","bead","bread","very","road", "ryley", "testing"
-    };
+//    vector<string> dictionary = {
+//        "bred","yore","byre","abed","oread","bore","orby","robed","phone",
+//        "broad","byroad","robe","bored","derby","bade","aero","read", "small",
+//        "orbed","verb","aery","bead","bread","very","road", "ryley", "testing"
+//    };
     
     Trie* root = new Trie();
-    for (int i=0; i<dictionary.size(); i++) {
-        root->addWord(dictionary[i]);
+//    for (int i=0; i<dictionary.size(); i++) {
+    for (int i=0; i<dict.size(); i++) {
+        root->addWord(dict[i]);
     }
     
     printTrie(root);
@@ -201,7 +213,8 @@ int main()
     int n = 3; //columns
     vector<B_row_t> bb = buildBoard(m, n, inputString); //boggle board
     
-   	vector<string> foundWords = findWords(m, n, bb, dictionary, root);
+//   	vector<string> foundWords = findWords(m, n, bb, dictionary, root);
+   	vector<string> foundWords = findWords(m, n, bb, dict, root);
     printf("Found %lu words:\n", foundWords.size());
     for (int j = 0; j < foundWords.size(); ++j) {
         printf("%s\n", foundWords[j].c_str());
