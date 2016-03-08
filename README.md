@@ -3,8 +3,12 @@ Boggle solver in c++
 
 Using OSX dictionary and a 100 x 100 random string:
 
+Compile directions: g++ -std=c++11 -O3 main.cpp
 
-*Searched 235886 words, found  16958 words and it took 219.188140 seconds*
+It's an XCode project but g++ with optimization is faster. That's for sure.
+
+*Searched 235886 words, found 16958 words and it took 37.959188 seconds*
+
 
 Using a 4x4 standard boggle board:
 
