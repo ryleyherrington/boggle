@@ -16,16 +16,16 @@ It's an XCode project but g++ with optimization is faster. That's for sure.
 
 
 
-Using a '4x4' standard boggle board:
+Using a `4x4` standard boggle board:
 
 >Searched 235886 words, found 9 words and it took 0.004809 seconds
 
-Using a '100x100' boggle board:
+Using a `100x100` boggle board:
 
 >Searched 235886 words, found 16958 words and it took 37.959188 seconds
 
 
-Okay and just for fun I did a '250x250'
+Okay and just for fun I did a `250x250`
 
 >Searched 235886 words, found 38019 words and it took 643.747588 seconds
 
