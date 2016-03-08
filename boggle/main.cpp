@@ -232,6 +232,8 @@ int main(int argc, char* argv[] )
     
     //Create a random input string for our board
     string inputString = "";
+	srand(time(0)); //initializes the call to rand to be better at psuedo randomness
+
     //comment the next 2 lines out if you want to provide your own string
     for (int s=0; s<m*n; s++)
         inputString += "abcdefghijklmnopqrstuvwxyz"[rand() % 26];
