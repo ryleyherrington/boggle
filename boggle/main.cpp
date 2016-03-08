@@ -207,7 +207,7 @@ int main(int argc, char* argv[] )
         dict.push_back(word);
     }
     
-    printf("Number of workds:%lu\n", dict.size());
+    printf("Number of words:%lu\n", dict.size());
     
 //    vector<string> dictionary = {
 //        "bred","yore","byre","abed","oread","bore","orby","robed","phone",
