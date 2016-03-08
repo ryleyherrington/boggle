@@ -44,7 +44,6 @@ struct BoggleSquare{
     char letter;
     BoggleSquare(bool x, char y) { isUsed = x; letter = y; }
     
-    //BoggleSquare(){isUsed=false; letter='\0';};
     BoggleSquare()
     : isUsed(false)
 	   , letter('\0')
@@ -59,8 +58,6 @@ struct Pos {
     Pos(int x, int y) { row = x; col = y; }
 };
 
-// struct offset_t; //forward declaration
-
 struct offset_t {
     int row_offset;
     int col_offset;
@@ -71,9 +68,7 @@ offset_t offsets [] = {
 };
 
 int Trie::letterInChildren(char c) {
-//    printf("\nParent: %c\n", c);
     for (int i=0; i<children.size(); i++){
- //       printf("\t\t%c", children[i]->letter);
         if (children[i]->letter == c) {
             return i;
         }
@@ -82,12 +77,10 @@ int Trie::letterInChildren(char c) {
 }
 
 string Trie::finalWord(string currWord) {
-    if (letter == '\0'){
+    if (letter == '\0')
         return currWord;
-    }
     
     //prepend
-    //currWord.insert(0, letter);
     currWord = letter + currWord;
     return parent->finalWord(currWord);
 }
