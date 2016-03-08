@@ -182,18 +182,31 @@ void printTrie(Trie* t) {
     }
 }
 
+void replaceSubstring(string& word, const string& substring, const string& replace) {
+    size_t ptr = 0;
+    while ((ptr = word.find(substring, ptr)) != string::npos) {
+        word.replace(ptr, substring.length(), replace);
+        ptr = ptr + replace.length();
+    }
+}
+
 int main(int argc, char* argv[] )
 {
   //  string inputString = "yoxrbaved";
-    string inputString = "zcuddeuvzksfkcwfnwaiinjjmglodyrvgjirsvfvdchllmahojakmfpfbqhcgcfvvyqdyqjnxuliceytobxdmfrchwuzpubkinxz";
+    string inputString =   "qietbasde";
+  //  string inputString = "zcuddeuvzksfkcwfnwaiinjjmglodyrvgjirsvfvdchllmahojakmfpfbqhcgcfvvyqdyqjnxuliceytobxdmfrchwuzpubkinxz";
     vector <string> dict;
     fstream f;
     f.open("/usr/share/dict/words", fstream::in);
 
     string word;
     while (f >> word) {
+        string q = "q";
+        string qu = "qu";
+        replaceSubstring(word, "qu", "q");
         dict.push_back(word);
     }
+    
     printf("Number of workds:%lu\n", dict.size());
     
 //    vector<string> dictionary = {
@@ -203,18 +216,16 @@ int main(int argc, char* argv[] )
 //    };
     
     Trie* root = new Trie();
-//    for (int i=0; i<dictionary.size(); i++) {
     for (int i=0; i<dict.size(); i++) {
         root->addWord(dict[i]);
     }
     
     printTrie(root);
     
-    int m = 10; //rows
-    int n = 10; //columns
+    int m = 3; //rows
+    int n = 3; //columns
     vector<B_row_t> bb = buildBoard(m, n, inputString); //boggle board
     
-//   	vector<string> foundWords = findWords(m, n, bb, dictionary, root);
     std::clock_t start;
     double duration;
     
@@ -224,7 +235,10 @@ int main(int argc, char* argv[] )
     printf("Took %f seconds\n", duration);
     printf("Found %lu words:\n", foundWords.size());
     for (int j = 0; j < foundWords.size(); ++j) {
-        printf("%s\n", foundWords[j].c_str());
+        string word = foundWords[j];
+        string q = "q";
+        replaceSubstring(word, "q", "qu");
+        printf("%s\n", word.c_str());
     }
 
     return 0;
