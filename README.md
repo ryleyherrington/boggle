@@ -17,5 +17,11 @@ Using a 4x4 standard boggle board:
 Heavily commented. But it uses a Trie structure to read in a dictionary and then we search that trie structure for words. Pretty fast. 
 
 
+Okay and just for fun I did a 250x250
+
+*Searched 235886 words, found 38019 words and it took 643.747588 seconds*
+
+
+
 
 
