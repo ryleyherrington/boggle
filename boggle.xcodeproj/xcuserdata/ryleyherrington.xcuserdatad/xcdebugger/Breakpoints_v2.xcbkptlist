@@ -10,13 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "boggle/main.cpp"
-            timestampString = "479005478.776697"
+            timestampString = "479109901.316232"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "222"
-            endingLineNumber = "222"
-            landmarkName = "main()"
-            landmarkType = "7">
+            startingLineNumber = "189"
+            endingLineNumber = "189">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -26,44 +24,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "boggle/main.cpp"
-            timestampString = "479005327.504645"
+            timestampString = "479109901.316232"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "163"
-            endingLineNumber = "163"
-            landmarkName = "traverse(Trie *t, string prefix, Pos p, vector&lt;B_row_t&gt;bb, int rowsize, int colsize)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "boggle/main.cpp"
-            timestampString = "479005330.910559"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "171"
-            endingLineNumber = "171"
-            landmarkName = "traverse(Trie *t, string prefix, Pos p, vector&lt;B_row_t&gt;bb, int rowsize, int colsize)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "boggle/main.cpp"
-            timestampString = "479005370.563378"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "164"
-            endingLineNumber = "164"
-            landmarkName = "traverse(Trie *t, string prefix, Pos p, vector&lt;B_row_t&gt;bb, int rowsize, int colsize)"
+            startingLineNumber = "271"
+            endingLineNumber = "271"
+            landmarkName = "main(int argc, char* argv[] )"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
