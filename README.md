@@ -12,8 +12,7 @@ It's an XCode project but g++ with optimization is faster. That's for sure.
 
 Using a 4x4 standard boggle board:
 
-*Searched 235886 words, found 29 words and it took 0.007833 seconds*
-
+*Searched 235886 words, found 9 words and it took 0.004809 seconds*
 
 Heavily commented. But it uses a Trie structure to read in a dictionary and then we search that trie structure for words. Pretty fast. 
 
