@@ -5,8 +5,6 @@ Heavily commented. But it uses a Trie structure to read in a dictionary and then
 The idea is that you build a trie from a given dictionary and once you have that built you start looking for words given an input BoggleSquare. It will traverse the trie and only search letters if there are children in the trie so it cuts down on that versus a hashtable. 
 
 
-Using OSX dictionary and a 100 x 100 random string:
-
 ## Compile directions: 
 ```sh 
 $g++ -std=c++11 -O3 main.cpp
